@@ -1,0 +1,31 @@
+<div class="my-content">
+  <mat-toolbar>
+    <mat-form-field class="search-filter">
+      <input matInput placeholder="Filter Characters..." [(ngModel)]='filterBy'>
+      <span>{{filterBy}}</span>
+    </mat-form-field>
+  </mat-toolbar>
+
+  <mat-list-item>
+    <button color="accent" mat-raised-button (click)="toggleShowCharacters()">
+      <span>Show or Hide Characters</span>
+    </button>
+    <button color="accent" mat-raised-button (click)="toggleDetails()">
+        <span>Show or Hide Details</span>
+      </button>
+  </mat-list-item>
+  <div *ngIf="showCharacters">
+    <mat-list>
+      <mat-list-item *ngFor="let character of characterList | characterListFilter:filterBy; let i = index">
+        <img mat-list-avatar [src]="character.avatar" [title]="character.name | lowercase"/>
+        <h3 mat-line>{{character.name | uppercase}}</h3>
+        <div mat-line>
+          <span *ngIf="showDetails">{{character.gender}}</span>
+          <span *ngIf="showDetails">{{character.birth_year}}</span>
+          <app-force [forceStrength]='character.force' (onForceChange)="changeForce(i, $event)"></app-force>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+</div>

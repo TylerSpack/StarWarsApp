@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">Star Wars App</mat-toolbar>
+
+
+<nav>
+    <a routerLink='home'>HOME</a>
+    <a routerLink='characters'>CHARACTERS</a>
+</nav>
+<mat-sidenav-container class="sidenav-container" autosize>
+    <mat-sidenav mode="side" opened>
+            <router-outlet></router-outlet>
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenav-content">
+        <!-- <app-sidenav-content></app-sidenav-content> -->
+        
+    </mat-sidenav-content>
+</mat-sidenav-container>
